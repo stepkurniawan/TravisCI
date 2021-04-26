@@ -8,8 +8,8 @@ before_install:
   - sudo apt-get install python3
   - pip install --upgrade pip setuptools
 
-#install:
-#  - pip install -r requirements.txt
+install:
+  - pip install -r requirements.txt
 
 script:
   - echo "Script is getting started"
@@ -19,12 +19,12 @@ before_deploy: "echo 'ready for s3 Deployment?'"
 
 deploy:
     provider: s3
-    access_key_id: $Access_key_ID
-    secret_access_key: $Secret_access_key
-    region: us-east-1
-    bucket: travis-bucket-jumpstart
-    local_dir: Local
-    upload-dir: test-CI
+    access_key_id: $AWS_ACCESS_KEY_ID 
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    region: $AWS_DEFAULT_REGION
+    bucket: $s3Bucket 
+    local_dir: PytF
+    upload-dir: glue
     skip_cleanup: true
    - echo "On this machine \$LANG=$LANG"
  
